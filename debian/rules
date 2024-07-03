@@ -7,3 +7,22 @@ export PYBUILD_NAME=smbc
 
 override_dh_installchangelogs:
 	dh_installchangelogs NEWS
+
+override_dh_auto_test:
+	# Run all tests only if smbd is available else run selective tests.
+	if command -v smbd >/dev/null 2>&1; then \
+		dh_auto_test; \
+	else \
+		PYBUILD_TEST_ARGS="tests -k 'not test_auth_succes \
+		and not test_auth_failed_noauth \
+		and not test_auth_failed_nouser \
+		and not test_mkdir \
+		and not test_mkdir_error_exists \
+		and not test_list_dir \
+		and not test_stat \
+		and not test_stat_error_notfound \
+		and not test_cleanup \
+		and not test_auth_failed_nopass \
+		and not test_rename'" \
+		dh_auto_test; \
+	fi

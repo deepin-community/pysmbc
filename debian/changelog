@@ -1,3 +1,21 @@
+pysmbc (1.0.25.1-1) unstable; urgency=medium
+
+  * Team Upload
+ 
+  [Alexandre Detiste]
+  * New upstream version 1.0.25.1 (Closes: #1055560)
+
+  [Yogeswaran Umasankar]
+  * Set dh_auto_test based on smbd availability to fix error
+    during build.
+  * Revised pytest to python3-pytest + bumped Standards-Version
+    to 4.6.2 in d/control.
+  * Updated watch file to avoid downloading .asc, upstream missing
+    signature.
+  * Removed signature file from d/upsteam.
+
+ -- Alexandre Detiste <tchet@debian.org>  Sun, 21 Jan 2024 23:30:00 +0000
+
 pysmbc (1.0.23-2) unstable; urgency=medium
 
   * debian/control
